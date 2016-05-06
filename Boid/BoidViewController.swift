@@ -21,7 +21,7 @@ class BoidViewController: UIViewController {
 
             skView.ignoresSiblingOrder = true
 
-            let scene = BoidScene(size: CGSize(width: CGRectGetWidth(skView.bounds), height: CGRectGetWidth(skView.bounds)))
+            let scene = BoidScene(size: CGSize(width: CGRectGetWidth(skView.bounds), height: CGRectGetHeight(skView.bounds)))
             skView.presentScene(scene)
         }
     }
