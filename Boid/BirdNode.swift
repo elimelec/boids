@@ -32,7 +32,7 @@ class BirdNode: SKNode {
         let path = CGPathCreateMutable()
         let degrees = [0.0, 130.0, 260.0]
         for degree in degrees {
-            let point = Utility.rotatedPoint(degree: degree, radius: self.radius, base: self.base)
+            let point = rotatedPoint(degree: degree, radius: self.radius, base: self.base)
             if degree == 0.0 {
                 CGPathMoveToPoint(path, nil, point.x, point.y)
             } else {
@@ -53,7 +53,7 @@ class BirdNode: SKNode {
         fireNode.yScale = 0.9
         
         fireNode.particleLifetime = 0.3
-        fireNode.emissionAngle = -CGFloat(Utility.degreeToRadian(90.0))
+        fireNode.emissionAngle = -CGFloat(degreeToRadian(90.0))
         fireNode.emissionAngleRange = 0.0
         fireNode.particlePositionRange = CGVector(dx: 0.0, dy: 0.1)
 

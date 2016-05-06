@@ -27,7 +27,7 @@ class BoidScene: SKScene {
         for i in 0..<self.numberOfBirds {
             let birdNode = BirdNode()
             let degree = degree * Double(i)
-            let radian = Utility.degreeToRadian(degree)
+            let radian = degreeToRadian(degree)
             let x = Double(CGRectGetMidX(self.frame)) + cos(radian) * radius
             let y = Double(CGRectGetMidY(self.frame)) + sin(radian) * radius
             birdNode.position = CGPoint(x: x, y: y)
