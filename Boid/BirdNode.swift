@@ -1,11 +1,3 @@
-//
-//  BirdNode.swift
-//  Boid
-//
-//  Created by Tatsuya Tobioka on 9/14/14.
-//  Copyright (c) 2014 tnantoka. All rights reserved.
-//
-
 import SpriteKit
 
 class BirdNode: SKNode {

@@ -1,11 +1,3 @@
-//
-//  SeparationRule.swift
-//  Boid
-//
-//  Created by Tatsuya Tobioka on 9/15/14.
-//  Copyright (c) 2014 tnantoka. All rights reserved.
-//
-
 import UIKit
 
 class SeparationRule: Rule {

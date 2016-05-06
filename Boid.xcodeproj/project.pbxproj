@@ -12,7 +12,6 @@
 		9BBC54B219C5CED100AB83B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC54B119C5CED100AB83B3 /* AppDelegate.swift */; };
 		9BBC54B919C5CED100AB83B3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BBC54B819C5CED100AB83B3 /* Images.xcassets */; };
 		9BBC54BC19C5CED100AB83B3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BBC54BA19C5CED100AB83B3 /* LaunchScreen.xib */; };
-		9BBC54C819C5CED100AB83B3 /* BoidTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC54C719C5CED100AB83B3 /* BoidTests.swift */; };
 		9BBC550419C5D78200AB83B3 /* BoidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC550319C5D78100AB83B3 /* BoidViewController.swift */; };
 		9BBC550619C5DAA100AB83B3 /* BoidScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC550519C5DAA100AB83B3 /* BoidScene.swift */; };
 		9BBC550819C5DD2D00AB83B3 /* BirdNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC550719C5DD2D00AB83B3 /* BirdNode.swift */; };
@@ -23,16 +22,6 @@
 		9BBC551419C69A3A00AB83B3 /* AlignmentRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC551319C69A3A00AB83B3 /* AlignmentRule.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		9BBC54C219C5CED100AB83B3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9BBC54A419C5CED100AB83B3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9BBC54AB19C5CED100AB83B3;
-			remoteInfo = Boid;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		9B8F629A19C775CF006F56BB /* fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fire.sks; sourceTree = "<group>"; };
 		9B8F629B19C775CF006F56BB /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
@@ -41,9 +30,6 @@
 		9BBC54B119C5CED100AB83B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BBC54B819C5CED100AB83B3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9BBC54BB19C5CED100AB83B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		9BBC54C119C5CED100AB83B3 /* BoidTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoidTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9BBC54C619C5CED100AB83B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9BBC54C719C5CED100AB83B3 /* BoidTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoidTests.swift; sourceTree = "<group>"; };
 		9BBC550319C5D78100AB83B3 /* BoidViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoidViewController.swift; sourceTree = "<group>"; };
 		9BBC550519C5DAA100AB83B3 /* BoidScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoidScene.swift; sourceTree = "<group>"; };
 		9BBC550719C5DD2D00AB83B3 /* BirdNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirdNode.swift; sourceTree = "<group>"; };
@@ -62,13 +48,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9BBC54BE19C5CED100AB83B3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -76,7 +55,6 @@
 			isa = PBXGroup;
 			children = (
 				9BBC54AE19C5CED100AB83B3 /* Boid */,
-				9BBC54C419C5CED100AB83B3 /* BoidTests */,
 				9BBC54AD19C5CED100AB83B3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,7 +63,6 @@
 			isa = PBXGroup;
 			children = (
 				9BBC54AC19C5CED100AB83B3 /* Boid.app */,
-				9BBC54C119C5CED100AB83B3 /* BoidTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -119,23 +96,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9BBC54C419C5CED100AB83B3 /* BoidTests */ = {
-			isa = PBXGroup;
-			children = (
-				9BBC54C719C5CED100AB83B3 /* BoidTests.swift */,
-				9BBC54C519C5CED100AB83B3 /* Supporting Files */,
-			);
-			path = BoidTests;
-			sourceTree = "<group>";
-		};
-		9BBC54C519C5CED100AB83B3 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				9BBC54C619C5CED100AB83B3 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -156,24 +116,6 @@
 			productReference = 9BBC54AC19C5CED100AB83B3 /* Boid.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9BBC54C019C5CED100AB83B3 /* BoidTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9BBC54CE19C5CED100AB83B3 /* Build configuration list for PBXNativeTarget "BoidTests" */;
-			buildPhases = (
-				9BBC54BD19C5CED100AB83B3 /* Sources */,
-				9BBC54BE19C5CED100AB83B3 /* Frameworks */,
-				9BBC54BF19C5CED100AB83B3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9BBC54C319C5CED100AB83B3 /* PBXTargetDependency */,
-			);
-			name = BoidTests;
-			productName = BoidTests;
-			productReference = 9BBC54C119C5CED100AB83B3 /* BoidTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -186,10 +128,6 @@
 				TargetAttributes = {
 					9BBC54AB19C5CED100AB83B3 = {
 						CreatedOnToolsVersion = 6.0;
-					};
-					9BBC54C019C5CED100AB83B3 = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 9BBC54AB19C5CED100AB83B3;
 					};
 				};
 			};
@@ -207,7 +145,6 @@
 			projectRoot = "";
 			targets = (
 				9BBC54AB19C5CED100AB83B3 /* Boid */,
-				9BBC54C019C5CED100AB83B3 /* BoidTests */,
 			);
 		};
 /* End PBXProject section */
@@ -221,13 +158,6 @@
 				9B8F629D19C775CF006F56BB /* spark.png in Resources */,
 				9BBC54B919C5CED100AB83B3 /* Images.xcassets in Resources */,
 				9B8F629C19C775CF006F56BB /* fire.sks in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9BBC54BF19C5CED100AB83B3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,23 +180,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9BBC54BD19C5CED100AB83B3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9BBC54C819C5CED100AB83B3 /* BoidTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		9BBC54C319C5CED100AB83B3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9BBC54AB19C5CED100AB83B3 /* Boid */;
-			targetProxy = 9BBC54C219C5CED100AB83B3 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9BBC54BA19C5CED100AB83B3 /* LaunchScreen.xib */ = {
@@ -380,42 +294,6 @@
 			};
 			name = Release;
 		};
-		9BBC54CF19C5CED100AB83B3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = BoidTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "jp.spritekit.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Boid.app/Boid";
-			};
-			name = Debug;
-		};
-		9BBC54D019C5CED100AB83B3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = BoidTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "jp.spritekit.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Boid.app/Boid";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -433,15 +311,6 @@
 			buildConfigurations = (
 				9BBC54CC19C5CED100AB83B3 /* Debug */,
 				9BBC54CD19C5CED100AB83B3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9BBC54CE19C5CED100AB83B3 /* Build configuration list for PBXNativeTarget "BoidTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9BBC54CF19C5CED100AB83B3 /* Debug */,
-				9BBC54D019C5CED100AB83B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
