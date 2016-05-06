@@ -20,8 +20,8 @@ class BirdNode: SKNode {
             AlignmentRule(weight: 0.1)
         ]
 
-        //self.addShapeNode()
-        self.addFireNode()
+        self.addShapeNode()
+        //self.addFireNode()
     }
 
     required init?(coder aDecoder: NSCoder) {
