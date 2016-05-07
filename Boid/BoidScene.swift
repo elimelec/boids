@@ -46,6 +46,18 @@ class BoidScene: SKScene {
     }
 
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.createSceneContents()
+		super.touchesEnded(touches, withEvent: event)
+
+		self.createSceneContents()
+
+		let birdNode = BirdNode()
+		let touch = touches.first!
+		let height = self.view!.frame.size.height
+		var position = touch.locationInView(self.view)
+		position.y = height - position.y
+		birdNode.position = position
+            
+		self.addChild(birdNode)
+		self.birdNodes.append(birdNode)
     }
 }
