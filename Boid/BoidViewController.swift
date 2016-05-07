@@ -15,8 +15,8 @@ class BoidViewController: UIViewController {
             skView.showsFPS = true
             skView.showsNodeCount = true
             skView.showsDrawCount = true
-            skView.showsPhysics = true
-            skView.showsFields = true
+            //skView.showsPhysics = true
+            //skView.showsFields = true
             skView.showsQuadCount = true
 
             skView.ignoresSiblingOrder = true
