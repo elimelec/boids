@@ -10,55 +10,55 @@ class BoidScene: SKScene {
     let startWithTouch = false
     
     override func didMoveToView(view: SKView) {
-        self.scaleMode = .AspectFit
+        scaleMode = .AspectFit
         backgroundColor = UIColor.blackColor()
 
         if !startWithTouch {
-            self.createSceneContents()
+            createSceneContents()
         }
     }
     
     func createSceneContents() {
-        if self.contentCreated {
+        if contentCreated {
             return
         }
 
-        let degree: Double = 360.0 / Double(self.numberOfBirds)
+        let degree: Double = 360.0 / Double(numberOfBirds)
         let radius = 120.0
-        for i in 0..<self.numberOfBirds {
+        for i in 0..<numberOfBirds {
             let birdNode = BirdNode()
             let degree = degree * Double(i)
             let radian = degreeToRadian(degree)
-            let x = Double(CGRectGetMidX(self.frame)) + cos(radian) * radius
-            let y = Double(CGRectGetMidY(self.frame)) + sin(radian) * radius
+            let x = Double(CGRectGetMidX(frame)) + cos(radian) * radius
+            let y = Double(CGRectGetMidY(frame)) + sin(radian) * radius
             birdNode.position = CGPoint(x: x, y: y)
             
-            self.addChild(birdNode)
-            self.birdNodes.append(birdNode)
+            addChild(birdNode)
+            birdNodes.append(birdNode)
         }
         
-        self.contentCreated = true
+        contentCreated = true
     }
     
     override func update(currentTime: NSTimeInterval) {
-        for birdNode in self.birdNodes {
-            birdNode.update(birdNodes: self.birdNodes, frame: self.frame)
+        for birdNode in birdNodes {
+            birdNode.update(birdNodes: birdNodes, frame: frame)
         }
     }
 
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
 		super.touchesEnded(touches, withEvent: event)
 
-		self.createSceneContents()
+		createSceneContents()
 
 		let birdNode = BirdNode()
 		let touch = touches.first!
-		let height = self.view!.frame.size.height
-		var position = touch.locationInView(self.view)
+		let height = view!.frame.size.height
+		var position = touch.locationInView(view)
 		position.y = height - position.y
 		birdNode.position = position
             
-		self.addChild(birdNode)
-		self.birdNodes.append(birdNode)
+		addChild(birdNode)
+		birdNodes.append(birdNode)
     }
 }

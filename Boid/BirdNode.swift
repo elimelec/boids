@@ -14,15 +14,15 @@ class BirdNode: SKNode {
 
         super.init()
 
-        self.rules = [
+        rules = [
             CohesionRule(weight: 1.0),
             SeparationRule(weight: 0.8),
             AlignmentRule(weight: 0.1),
             NoiseRule(weight: 0.2)
         ]
 
-        self.addShapeNode()
-        //self.addFireNode()
+        addShapeNode()
+        //addFireNode()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -33,7 +33,7 @@ class BirdNode: SKNode {
         let path = CGPathCreateMutable()
         let degrees = [0.0, 130.0, 260.0]
         for degree in degrees {
-            let point = rotatedPoint(degree: degree, radius: self.radius, base: self.base)
+            let point = rotatedPoint(degree: degree, radius: radius, base: base)
             if degree == 0.0 {
                 CGPathMoveToPoint(path, nil, point.x, point.y)
             } else {
@@ -44,7 +44,7 @@ class BirdNode: SKNode {
         let shapeNode = SKShapeNode(path: path)
         shapeNode.fillColor = SKColor.whiteColor()
         
-        self.addChild(shapeNode)
+        addChild(shapeNode)
     }
     
     func addFireNode() {
@@ -60,51 +60,51 @@ class BirdNode: SKNode {
 
         fireNode.particleColor = SKColor.orangeColor()
         
-        self.addChild(fireNode)
+        addChild(fireNode)
     }
 
     func update(birdNodes birdNodes: [BirdNode], frame: CGRect) {
-        for rule in self.rules {
+        for rule in rules {
             rule.evaluate(targetNode: self, birdNodes: birdNodes)
         }
-        self.move(frame)
-        self.rotate()
+        move(frame)
+        rotate()
     }
 
     private func move(frame: CGRect) {
-        self.velocity.x += rules.reduce(0.0, combine: { sum, r in sum + r.weighted.x })
-        self.velocity.y += rules.reduce(0.0, combine: { sum, r in sum + r.weighted.y })
+        velocity.x += rules.reduce(0.0, combine: { sum, r in sum + r.weighted.x })
+        velocity.y += rules.reduce(0.0, combine: { sum, r in sum + r.weighted.y })
 
-        let vector = sqrt(self.velocity.x * self.velocity.x + self.velocity.y * self.velocity.y)
-        if (vector > self.maxSpeed) {
-            self.velocity.x = (self.velocity.x / vector) * self.maxSpeed
-            self.velocity.y = (self.velocity.y / vector) * self.maxSpeed
+        let vector = sqrt(velocity.x * velocity.x + velocity.y * velocity.y)
+        if (vector > maxSpeed) {
+            velocity.x = (velocity.x / vector) * maxSpeed
+            velocity.y = (velocity.y / vector) * maxSpeed
         }
         
-        self.position.x += velocity.x
-        self.position.y += velocity.y
+        position.x += velocity.x
+        position.y += velocity.y
         
-        if (self.position.x - CGFloat(self.radius) <= 0) {
-            self.position.x = CGFloat(self.radius)
-            self.velocity.x *= -1
+        if (position.x - CGFloat(radius) <= 0) {
+            position.x = CGFloat(radius)
+            velocity.x *= -1
         }
-        if (self.position.x + CGFloat(self.radius) >= CGRectGetWidth(frame)) {
-            self.position.x = CGRectGetWidth(frame) - CGFloat(self.radius)
-            self.velocity.x *= -1
+        if (position.x + CGFloat(radius) >= CGRectGetWidth(frame)) {
+            position.x = CGRectGetWidth(frame) - CGFloat(radius)
+            velocity.x *= -1
         }
 
-        if (self.position.y - CGFloat(self.radius) <= 0) {
-            self.position.y = CGFloat(self.radius)
-            self.velocity.y *= -1
+        if (position.y - CGFloat(radius) <= 0) {
+            position.y = CGFloat(radius)
+            velocity.y *= -1
         }
-        if (self.position.y + CGFloat(self.radius) >= CGRectGetHeight(frame)) {
-            self.position.y = CGRectGetHeight(frame) - CGFloat(self.radius)
-            self.velocity.y *= -1
+        if (position.y + CGFloat(radius) >= CGRectGetHeight(frame)) {
+            position.y = CGRectGetHeight(frame) - CGFloat(radius)
+            velocity.y *= -1
         }
     }
     
     private func rotate() {
         let radian = -atan2(Double(velocity.x), Double(velocity.y))
-        self.zRotation = CGFloat(radian)
+        zRotation = CGFloat(radian)
     }
 }

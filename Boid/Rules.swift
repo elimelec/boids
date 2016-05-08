@@ -5,21 +5,21 @@ class Rule: NSObject {
     var weight: CGFloat
 
     var weighted: CGPoint {
-        return CGPoint(x: self.velocity.x * self.weight, y: self.velocity.y * self.weight)
+        return CGPoint(x: velocity.x * weight, y: velocity.y * weight)
     }
 
     init(weight: CGFloat) {
         self.weight = weight
         super.init()
-        self.clear()
+        clear()
     }
     
     func clear() {
-        self.velocity = CGPoint(x: 0.0, y: 0.0)
+        velocity = CGPoint(x: 0.0, y: 0.0)
     }
     
     func evaluate(targetNode targetNode: BirdNode, birdNodes: [BirdNode]) {
-        self.clear()
+        clear()
     }    
 }
 
@@ -31,8 +31,8 @@ class AlignmentRule: Rule {
 
         for birdNode in birdNodes {
             if birdNode != targetNode {
-                self.velocity.x += birdNode.velocity.x
-                self.velocity.y += birdNode.velocity.y
+                velocity.x += birdNode.velocity.x
+                velocity.y += birdNode.velocity.y
             }
         }
 
@@ -40,11 +40,11 @@ class AlignmentRule: Rule {
             return
         }
 
-        self.velocity.x /= CGFloat(birdNodes.count - 1)
-        self.velocity.y /= CGFloat(birdNodes.count - 1)
+        velocity.x /= CGFloat(birdNodes.count - 1)
+        velocity.y /= CGFloat(birdNodes.count - 1)
         
-        self.velocity.x = (self.velocity.x - targetNode.velocity.x) / self.factor
-        self.velocity.y = (self.velocity.y - targetNode.velocity.y) / self.factor
+        velocity.x = (velocity.x - targetNode.velocity.x) / factor
+        velocity.y = (velocity.y - targetNode.velocity.y) / factor
     }
 }
 
@@ -56,8 +56,8 @@ class CohesionRule: Rule {
 
         for birdNode in birdNodes {
             if birdNode != targetNode {
-                self.velocity.x += birdNode.position.x
-                self.velocity.y += birdNode.position.y
+                velocity.x += birdNode.position.x
+                velocity.y += birdNode.position.y
             }
         }
 
@@ -65,11 +65,11 @@ class CohesionRule: Rule {
             return
         }
 
-        self.velocity.x /= CGFloat(birdNodes.count - 1)
-        self.velocity.y /= CGFloat(birdNodes.count - 1)
+        velocity.x /= CGFloat(birdNodes.count - 1)
+        velocity.y /= CGFloat(birdNodes.count - 1)
         
-        self.velocity.x = (self.velocity.x - targetNode.position.x) / self.factor
-        self.velocity.y = (self.velocity.y - targetNode.position.y) / self.factor
+        velocity.x = (velocity.x - targetNode.position.x) / factor
+        velocity.y = (velocity.y - targetNode.position.y) / factor
     }
 }
 
@@ -77,7 +77,7 @@ class NoiseRule: Rule {
     override func evaluate(targetNode targetNode: BirdNode, birdNodes: [BirdNode]) {
         super.evaluate(targetNode: targetNode, birdNodes: birdNodes)
 
-        self.velocity = CGPoint(x:drand48() - 0.5, y:drand48() - 0.5)
+        velocity = CGPoint(x:drand48() - 0.5, y:drand48() - 0.5)
     }
 }
 
@@ -89,9 +89,9 @@ class SeparationRule: Rule {
 
         for birdNode in birdNodes {
             if birdNode != targetNode {
-                if distanceBetween(targetNode.position, birdNode.position) < self.threshold {
-                    self.velocity.x -= birdNode.position.x - targetNode.position.x
-                    self.velocity.y -= birdNode.position.y - targetNode.position.y
+                if distanceBetween(targetNode.position, birdNode.position) < threshold {
+                    velocity.x -= birdNode.position.x - targetNode.position.x
+                    velocity.y -= birdNode.position.y - targetNode.position.y
                 }
             }
         }

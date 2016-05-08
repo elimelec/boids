@@ -5,13 +5,13 @@ class BoidViewController: UIViewController {
     override func loadView() {
         let applicationFrame = UIScreen.mainScreen().bounds
         let skView = SKView(frame: applicationFrame)
-        self.view = skView
+        view = skView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let skView = self.view as? SKView {
+        if let skView = view as? SKView {
             skView.showsFPS = true
             skView.showsNodeCount = true
             skView.showsDrawCount = true
