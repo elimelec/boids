@@ -25,4 +25,8 @@ class BoidViewController: UIViewController {
             skView.presentScene(scene)
         }
     }
+
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
 }
