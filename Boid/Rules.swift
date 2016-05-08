@@ -35,7 +35,11 @@ class AlignmentRule: Rule {
                 self.velocity.y += birdNode.velocity.y
             }
         }
-        
+
+        if birdNodes.count <= 1 {
+            return
+        }
+
         self.velocity.x /= CGFloat(birdNodes.count - 1)
         self.velocity.y /= CGFloat(birdNodes.count - 1)
         
@@ -49,14 +53,18 @@ class CohesionRule: Rule {
     
     override func evaluate(targetNode targetNode: BirdNode, birdNodes: [BirdNode]) {
         super.evaluate(targetNode: targetNode, birdNodes: birdNodes)
-        
+
         for birdNode in birdNodes {
             if birdNode != targetNode {
                 self.velocity.x += birdNode.position.x
                 self.velocity.y += birdNode.position.y
             }
         }
-        
+
+        if birdNodes.count <= 1 {
+            return
+        }
+
         self.velocity.x /= CGFloat(birdNodes.count - 1)
         self.velocity.y /= CGFloat(birdNodes.count - 1)
         
