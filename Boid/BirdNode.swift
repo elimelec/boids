@@ -17,7 +17,8 @@ class BirdNode: SKNode {
         self.rules = [
             CohesionRule(weight: 1.0),
             SeparationRule(weight: 0.8),
-            AlignmentRule(weight: 0.1)
+            AlignmentRule(weight: 0.1),
+            NoiseRule(weight: 0.2)
         ]
 
         self.addShapeNode()

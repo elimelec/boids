@@ -73,6 +73,14 @@ class CohesionRule: Rule {
     }
 }
 
+class NoiseRule: Rule {
+    override func evaluate(targetNode targetNode: BirdNode, birdNodes: [BirdNode]) {
+        super.evaluate(targetNode: targetNode, birdNodes: birdNodes)
+
+        self.velocity = CGPoint(x:drand48() - 0.5, y:drand48() - 0.5)
+    }
+}
+
 class SeparationRule: Rule {
     let threshold = 30.0
     
