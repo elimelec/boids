@@ -11,6 +11,7 @@ class BoidScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         self.scaleMode = .AspectFit
+        backgroundColor = UIColor.blackColor()
 
         if !startWithTouch {
             self.createSceneContents()
