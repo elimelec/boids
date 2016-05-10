@@ -8,6 +8,8 @@ class BirdNode: SKNode {
 
 	var shapeNode: SKShapeNode!
 	var color: SKColor = SKColor.whiteColor()
+
+	var shouldDie = false
     
     var velocity = CGPoint(x: 0.0, y: 0.0)
 
@@ -68,6 +70,11 @@ class BirdNode: SKNode {
         
         addChild(fireNode)
     }
+
+	func prepareToDie() {
+		color = SKColor.redColor()
+		shouldDie = true
+	}
 
     func update(birdNodes birdNodes: [BirdNode], frame: CGRect) {
         for rule in rules {

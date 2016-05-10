@@ -9,6 +9,8 @@ class BoidScene: SKScene {
     
     let startWithTouch = false
 
+	var timer: NSTimer!
+
 	var screenFrame: CGRect!
     
     override func didMoveToView(view: SKView) {
@@ -20,6 +22,8 @@ class BoidScene: SKScene {
         if !startWithTouch {
             createSceneContents()
         }
+
+		timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(killBoids), userInfo: nil, repeats: true)
     }
     
     func createSceneContents() {
@@ -49,6 +53,46 @@ class BoidScene: SKScene {
             birdNode.update(birdNodes: birdNodes, frame: frame)
         }
     }
+
+	func killBoids() {
+		for birdNode in birdNodes {
+			if shouldBoidDie(birdNode, birdNodes: birdNodes) {
+				birdNode.prepareToDie()
+			}
+        }
+
+		delay(1.5) {
+			let shouldDie = self.birdNodes.filter {$0.shouldDie}
+			let newGeneration = self.birdNodes.filter {!$0.shouldDie}
+
+			self.removeChildrenInArray(shouldDie)
+			self.birdNodes = newGeneration
+		}
+	}
+
+	func shouldBoidDie(boid:BirdNode, birdNodes: [BirdNode]) -> Bool {
+		let range = 300.0
+		var boidsInCurrentGroup = 0
+
+        for birdNode in birdNodes {
+            if birdNode == boid {
+				continue
+			}
+
+			if distanceBetween(birdNode.position, boid.position) > range {
+				continue
+			}
+
+			boidsInCurrentGroup += 1
+        }
+
+		if boidsInCurrentGroup > 10 {
+			return true
+		}
+		else {
+			return false
+		}
+	}
 
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
 		super.touchesEnded(touches, withEvent: event)
