@@ -85,21 +85,17 @@ class BirdNode: SKNode {
         position.y += velocity.y
         
         if (position.x - CGFloat(radius) <= 0) {
-            position.x = CGFloat(radius)
-            velocity.x *= -1
+			position.x = CGRectGetWidth(frame) - CGFloat(radius)
         }
-        if (position.x + CGFloat(radius) >= CGRectGetWidth(frame)) {
-            position.x = CGRectGetWidth(frame) - CGFloat(radius)
-            velocity.x *= -1
+        else if (position.x + CGFloat(radius) >= CGRectGetWidth(frame)) {
+			position.x = CGFloat(radius)
         }
 
         if (position.y - CGFloat(radius) <= 0) {
-            position.y = CGFloat(radius)
-            velocity.y *= -1
-        }
-        if (position.y + CGFloat(radius) >= CGRectGetHeight(frame)) {
             position.y = CGRectGetHeight(frame) - CGFloat(radius)
-            velocity.y *= -1
+        }
+        else if (position.y + CGFloat(radius) >= CGRectGetHeight(frame)) {
+            position.y = CGFloat(radius)
         }
     }
     
