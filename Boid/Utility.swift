@@ -16,3 +16,12 @@ func rotatedPoint(degree degree: Double, radius: Double, base: Double = 0.0) -> 
 	let y = radius * sin(radian)
 	return CGPoint(x: x, y: y)
 }
+
+func delay(delay:Double, closure:()->()) {
+    dispatch_after(
+        dispatch_time(
+            DISPATCH_TIME_NOW,
+            Int64(delay * Double(NSEC_PER_SEC))
+        ),
+        dispatch_get_main_queue(), closure)
+}

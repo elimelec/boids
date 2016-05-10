@@ -5,6 +5,9 @@ class BirdNode: SKNode {
     let base = -50.0
 
     let maxSpeed: CGFloat = 4.0
+
+	var shapeNode: SKShapeNode!
+	var color: SKColor = SKColor.whiteColor()
     
     var velocity = CGPoint(x: 0.0, y: 0.0)
 
@@ -41,8 +44,8 @@ class BirdNode: SKNode {
             }
         }
         
-        let shapeNode = SKShapeNode(path: path)
-        shapeNode.fillColor = SKColor.whiteColor()
+        shapeNode = SKShapeNode(path: path)
+        shapeNode.fillColor = color
         
         addChild(shapeNode)
     }
@@ -69,6 +72,8 @@ class BirdNode: SKNode {
         }
         move(frame)
         rotate()
+		shapeNode.strokeColor = color
+		shapeNode.fillColor = color
     }
 
     private func move(frame: CGRect) {
@@ -86,16 +91,32 @@ class BirdNode: SKNode {
         
         if (position.x - CGFloat(radius) <= 0) {
 			position.x = CGRectGetWidth(frame) - CGFloat(radius)
+			color = SKColor.yellowColor()
+			delay(0.2) {
+				self.color = SKColor.whiteColor()
+			}
         }
         else if (position.x + CGFloat(radius) >= CGRectGetWidth(frame)) {
 			position.x = CGFloat(radius)
+			color = SKColor.yellowColor()
+			delay(0.2) {
+				self.color = SKColor.whiteColor()
+			}
         }
 
         if (position.y - CGFloat(radius) <= 0) {
             position.y = CGRectGetHeight(frame) - CGFloat(radius)
+			color = SKColor.yellowColor()
+			delay(0.2) {
+				self.color = SKColor.whiteColor()
+			}
         }
         else if (position.y + CGFloat(radius) >= CGRectGetHeight(frame)) {
             position.y = CGFloat(radius)
+			color = SKColor.yellowColor()
+			delay(0.2) {
+				self.color = SKColor.whiteColor()
+			}
         }
     }
     
