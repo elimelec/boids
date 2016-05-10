@@ -8,10 +8,14 @@ class BoidScene: SKScene {
     var contentCreated = false
     
     let startWithTouch = false
+
+	var screenFrame: CGRect!
     
     override func didMoveToView(view: SKView) {
         scaleMode = .AspectFit
         backgroundColor = UIColor.blackColor()
+
+		screenFrame = view.frame
 
         if !startWithTouch {
             createSceneContents()
@@ -26,7 +30,7 @@ class BoidScene: SKScene {
         let degree: Double = 360.0 / Double(numberOfBirds)
         let radius = 120.0
         for i in 0..<numberOfBirds {
-            let birdNode = BirdNode()
+            let birdNode = BirdNode(frame: screenFrame)
             let degree = degree * Double(i)
             let radian = degreeToRadian(degree)
             let x = Double(CGRectGetMidX(frame)) + cos(radian) * radius
@@ -51,7 +55,7 @@ class BoidScene: SKScene {
 
 		createSceneContents()
 
-		let birdNode = BirdNode()
+		let birdNode = BirdNode(frame: screenFrame)
 		let touch = touches.first!
 		let height = view!.frame.size.height
 		var position = touch.locationInView(view)

@@ -12,17 +12,20 @@ class BirdNode: SKNode {
     var velocity = CGPoint(x: 0.0, y: 0.0)
 
     var rules: [Rule]!
-    
-    override init() {
 
-        super.init()
+	var screenFrame: CGRect!
+    
+    init(frame: CGRect) {
+		screenFrame = frame
 
         rules = [
-            CohesionRule(weight: 1.0),
-            SeparationRule(weight: 0.8),
-            AlignmentRule(weight: 0.1),
-            NoiseRule(weight: 0.2)
+            CohesionRule(weight: 1.0, frame: screenFrame),
+            SeparationRule(weight: 0.8, frame: screenFrame),
+            AlignmentRule(weight: 0.1, frame: screenFrame),
+            NoiseRule(weight: 0.2, frame: screenFrame),
         ]
+
+		super.init()
 
         addShapeNode()
         //addFireNode()

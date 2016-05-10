@@ -3,13 +3,15 @@ import UIKit
 class Rule: NSObject {
     var velocity: CGPoint!
     var weight: CGFloat
+	var frame: CGRect
 
     var weighted: CGPoint {
         return CGPoint(x: velocity.x * weight, y: velocity.y * weight)
     }
 
-    init(weight: CGFloat) {
+    init(weight: CGFloat, frame: CGRect) {
         self.weight = weight
+		self.frame = frame
         super.init()
         clear()
     }
@@ -58,7 +60,14 @@ class AlignmentRule: Rule {
 }
 
 class CohesionRule: Rule {
-    let factor: CGFloat = 300.0
+    var factorX: CGFloat {
+		return CGRectGetWidth(frame)
+	}
+
+	var factorY: CGFloat {
+		return CGRectGetHeight(frame)
+	}
+
 	let range = 300.0
     
     override func evaluate(targetNode targetNode: BirdNode, birdNodes: [BirdNode]) {
@@ -85,9 +94,9 @@ class CohesionRule: Rule {
 
         velocity.x /= CGFloat(boidsInCurrentGroup)
         velocity.y /= CGFloat(boidsInCurrentGroup)
-        
-        velocity.x = (velocity.x - targetNode.position.x) / factor
-        velocity.y = (velocity.y - targetNode.position.y) / factor
+
+        velocity.x = (velocity.x - targetNode.position.x) / factorX
+        velocity.y = (velocity.y - targetNode.position.y) / factorY
     }
 }
 
