@@ -25,23 +25,32 @@ class Rule: NSObject {
 
 class AlignmentRule: Rule {
     let factor: CGFloat = 2.0
+	let range = 300.0
     
     override func evaluate(targetNode targetNode: BirdNode, birdNodes: [BirdNode]) {
         super.evaluate(targetNode: targetNode, birdNodes: birdNodes)
 
+		var boidsInCurrentGroup = 0
         for birdNode in birdNodes {
-            if birdNode != targetNode {
-                velocity.x += birdNode.velocity.x
-                velocity.y += birdNode.velocity.y
-            }
+			if birdNode == targetNode {
+				continue
+			}
+
+			if distanceBetween(birdNode.position, targetNode.position) > range {
+				continue
+			}
+
+			boidsInCurrentGroup += 1
+			velocity.x += birdNode.velocity.x
+			velocity.y += birdNode.velocity.y
         }
 
-        if birdNodes.count <= 1 {
+        if boidsInCurrentGroup <= 1 {
             return
         }
 
-        velocity.x /= CGFloat(birdNodes.count - 1)
-        velocity.y /= CGFloat(birdNodes.count - 1)
+        velocity.x /= CGFloat(boidsInCurrentGroup)
+        velocity.y /= CGFloat(boidsInCurrentGroup)
         
         velocity.x = (velocity.x - targetNode.velocity.x) / factor
         velocity.y = (velocity.y - targetNode.velocity.y) / factor
@@ -50,23 +59,32 @@ class AlignmentRule: Rule {
 
 class CohesionRule: Rule {
     let factor: CGFloat = 300.0
+	let range = 300.0
     
     override func evaluate(targetNode targetNode: BirdNode, birdNodes: [BirdNode]) {
         super.evaluate(targetNode: targetNode, birdNodes: birdNodes)
 
+		var boidsInCurrentGroup = 0
         for birdNode in birdNodes {
-            if birdNode != targetNode {
-                velocity.x += birdNode.position.x
-                velocity.y += birdNode.position.y
-            }
+            if birdNode == targetNode {
+				continue
+			}
+
+			if distanceBetween(birdNode.position, targetNode.position) > range {
+				continue
+			}
+
+			boidsInCurrentGroup += 1
+			velocity.x += birdNode.position.x
+			velocity.y += birdNode.position.y
         }
 
-        if birdNodes.count <= 1 {
+        if boidsInCurrentGroup <= 1 {
             return
         }
 
-        velocity.x /= CGFloat(birdNodes.count - 1)
-        velocity.y /= CGFloat(birdNodes.count - 1)
+        velocity.x /= CGFloat(boidsInCurrentGroup)
+        velocity.y /= CGFloat(boidsInCurrentGroup)
         
         velocity.x = (velocity.x - targetNode.position.x) / factor
         velocity.y = (velocity.y - targetNode.position.y) / factor
