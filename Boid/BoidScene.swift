@@ -9,7 +9,8 @@ class BoidScene: SKScene {
     
     let startWithTouch = false
 
-	var timer: NSTimer!
+	var killTimer: NSTimer!
+	var spawnTimer: NSTimer!
 
 	var screenFrame: CGRect!
     
@@ -23,7 +24,8 @@ class BoidScene: SKScene {
             createSceneContents()
         }
 
-		timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(killBoids), userInfo: nil, repeats: true)
+		killTimer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(killBoids), userInfo: nil, repeats: true)
+		spawnTimer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(spawnBoid), userInfo: nil, repeats: true)
     }
     
     func createSceneContents() {
@@ -55,7 +57,15 @@ class BoidScene: SKScene {
     }
 
 	func spawnBoid() {
-
+		for boid in birdNodes {
+			if shouldSpawnBoid(boid, birdNodes: birdNodes) {
+				let newBoid = BirdNode(frame: screenFrame)
+				newBoid.position = boid.position
+				addChild(newBoid)
+				birdNodes.append(newBoid)
+				break
+			}
+		}
 	}
 
 	func killBoids() {
@@ -76,6 +86,30 @@ class BoidScene: SKScene {
 
 			self.removeChildrenInArray(shouldDie)
 			self.birdNodes = newGeneration
+		}
+	}
+
+	func shouldSpawnBoid(boid: BirdNode, birdNodes: [BirdNode]) -> Bool {
+		let range = 300.0
+		var boidsInCurrentGroup = 0
+
+        for birdNode in birdNodes {
+            if birdNode == boid {
+				continue
+			}
+
+			if distanceBetween(birdNode.position, boid.position) > range {
+				continue
+			}
+
+			boidsInCurrentGroup += 1
+        }
+
+		if boidsInCurrentGroup > 3 {
+			return true
+		}
+		else {
+			return false
 		}
 	}
 
