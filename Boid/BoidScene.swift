@@ -54,10 +54,19 @@ class BoidScene: SKScene {
         }
     }
 
+	func spawnBoid() {
+
+	}
+
 	func killBoids() {
+		var count = 0
 		for birdNode in birdNodes {
 			if shouldBoidDie(birdNode, birdNodes: birdNodes) {
 				birdNode.prepareToDie()
+				count += 1
+				if count > 2 {
+					break
+				}
 			}
         }
 
