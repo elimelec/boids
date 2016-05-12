@@ -27,6 +27,8 @@ class BirdNode: SKNode {
             NoiseRule(weight: 0.2, frame: screenFrame),
         ]
 
+		color = randomColor()
+
 		super.init()
 
         addShapeNode()
@@ -109,14 +111,14 @@ class BirdNode: SKNode {
 			position.x = CGRectGetWidth(frame) - CGFloat(radius)
 			color = SKColor.yellowColor()
 			delay(0.2) {
-				self.color = SKColor.whiteColor()
+				self.color = randomColor()
 			}
         }
         else if (position.x + CGFloat(radius) >= CGRectGetWidth(frame)) {
 			position.x = CGFloat(radius)
 			color = SKColor.yellowColor()
 			delay(0.2) {
-				self.color = SKColor.whiteColor()
+				self.color = randomColor()
 			}
         }
 
@@ -124,14 +126,14 @@ class BirdNode: SKNode {
             position.y = CGRectGetHeight(frame) - CGFloat(radius)
 			color = SKColor.yellowColor()
 			delay(0.2) {
-				self.color = SKColor.whiteColor()
+				self.color = randomColor()
 			}
         }
         else if (position.y + CGFloat(radius) >= CGRectGetHeight(frame)) {
             position.y = CGFloat(radius)
 			color = SKColor.yellowColor()
 			delay(0.2) {
-				self.color = SKColor.whiteColor()
+				self.color = randomColor()
 			}
         }
     }

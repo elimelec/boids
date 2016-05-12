@@ -25,3 +25,17 @@ func delay(delay:Double, closure:()->()) {
         ),
         dispatch_get_main_queue(), closure)
 }
+
+func randomColor() -> UIColor {
+	let colors = [
+		UIColor.blueColor(),
+		UIColor.greenColor(),
+		UIColor.cyanColor(),
+		UIColor.whiteColor(),
+		UIColor.grayColor(),
+		UIColor.brownColor(),
+		UIColor.orangeColor(),
+	]
+	let randomIndex = Int(arc4random_uniform(UInt32(colors.count)))
+	return colors[randomIndex]
+}
