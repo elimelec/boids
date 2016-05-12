@@ -82,6 +82,7 @@ class BirdNode: SKNode {
         for rule in rules {
             rule.evaluate(targetNode: self, birdNodes: birdNodes)
         }
+		updateColor(self, birdNodes:birdNodes)
         move(frame)
         rotate()
 		if shouldDie {
@@ -93,6 +94,47 @@ class BirdNode: SKNode {
 			shapeNode.fillColor = color
 		}
     }
+
+	func updateColor(boid: BirdNode, birdNodes:[BirdNode]) {
+		var tRed: CGFloat = 0
+		var tGreen: CGFloat = 0
+		var tBlue: CGFloat = 0
+		var tAlpha: CGFloat = 0
+
+		boid.color.getRed(&tRed, green: &tGreen, blue: &tBlue, alpha: &tAlpha)
+
+		var count: CGFloat = 1
+		for boidNode in birdNodes {
+			if boidNode == boid {
+				continue
+			}
+
+			if distanceBetween(boidNode.position, boid.position) > 300 {
+				continue
+			}
+
+			var red: CGFloat = 0
+			var blue: CGFloat = 0
+			var green: CGFloat = 0
+			var alpha: CGFloat = 1
+
+			boidNode.color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+
+			tRed += red
+			tGreen += green
+			tBlue += blue
+			tAlpha += alpha
+
+			count += 1
+		}
+
+		tRed /= count
+		tGreen /= count
+		tBlue /= count
+		tAlpha /= count
+
+		boid.color = UIColor(red: tRed, green: tGreen, blue: tBlue, alpha: tAlpha)
+	}
 
     private func move(frame: CGRect) {
         velocity.x += rules.reduce(0.0, combine: { sum, r in sum + r.weighted.x })
