@@ -82,8 +82,14 @@ class BirdNode: SKNode {
         }
         move(frame)
         rotate()
-		shapeNode.strokeColor = color
-		shapeNode.fillColor = color
+		if shouldDie {
+			shapeNode.strokeColor = UIColor.redColor()
+			shapeNode.fillColor = UIColor.redColor()
+		}
+		else {
+			shapeNode.strokeColor = color
+			shapeNode.fillColor = color
+		}
     }
 
     private func move(frame: CGRect) {
